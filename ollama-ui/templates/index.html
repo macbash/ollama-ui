@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ollama Chat UI</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🦙 Ollama Chat</h1>
+            <div class="connection-status" id="connectionStatus">
+                <span class="status-dot"></span>
+                <span class="status-text">Checking connection...</span>
+            </div>
+        </header>
+
+        <div class="model-selector">
+            <label for="modelSelect">Select Model:</label>
+            <select id="modelSelect" disabled>
+                <option value="">Loading models...</option>
+            </select>
+            <button id="refreshModels" class="icon-btn" title="Refresh models">🔄</button>
+        </div>
+
+        <div class="chat-container">
+            <div class="messages" id="messagesContainer">
+                <div class="welcome-message">
+                    <h2>Welcome to Ollama Chat!</h2>
+                    <p>Select a model above and start chatting with your local LLM.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="input-container">
+            <textarea
+                id="messageInput"
+                placeholder="Type your message here... (Shift+Enter for new line)"
+                rows="1"
+                disabled
+            ></textarea>
+            <button id="sendButton" disabled>
+                <span>Send</span>
+                <span class="shortcut">↵</span>
+            </button>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>
